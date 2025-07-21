@@ -1,0 +1,19 @@
+{
+  "name": "translator-node",
+  "version": "1.0.0",
+  "description": "Api to translate audiofiles into text files using AI Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-araujo-aus/Translator-NodeJS.git"
+  },
+  "author": "Carlos Araujo <carlos.araujo.aus.gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlos-araujo-aus/Translator-NodeJS/issues"
+  },
+  "homepage": "https://github.com/carlos-araujo-aus/Translator-NodeJS#readme"
+}
