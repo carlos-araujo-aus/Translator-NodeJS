@@ -4,21 +4,6 @@ const axios = require('axios');
 
 const url = "https://api.deepgram.com/v1/listen";
 
-function findAudioFile() {
-    const audioExtensions = ['.mp3', '.wav', '.m4a', '.ogg', '.flac', '.aac'];
-    const files = fs.readdirSync('./');
-    
-    for (const file of files) {
-        const ext = path.extname(file).toLowerCase();
-        if (audioExtensions.includes(ext)) {
-            console.log(`Found audio file: ${file}`);
-            return file;
-        }
-    }
-    
-    throw new Error('No audio files found in current directory');
-}
-
 async function transcripAudio(audioFilePath, apiKey) {
     try {
         if (!fs.existsSync(audioFilePath)) {
@@ -63,6 +48,7 @@ async function transcripAudio(audioFilePath, apiKey) {
 }
 
 require('dotenv').config();
+const audioPath = "./Audio.wav";
 const apiKey = process.env.DEEPGRAM_API_KEY;
 
 if (!apiKey) {
@@ -70,17 +56,11 @@ if (!apiKey) {
     process.exit(1);
 }
 
-try {
-    const audioPath = findAudioFile(); // ← Detecta automáticamente
-    
-    transcripAudio(audioPath, apiKey)
-     .then(transcription => {
-        console.log('Transcription completed successfully');
-        console.log('Text:', transcription);
-     })
-     .catch(error => {
-        console.error('Error:', error.message);
-     });
-} catch (error) {
+transcripAudio(audioPath, apiKey)
+ .then(transcription => {
+    console.log('Transcription completed successfully');
+    console.log('Text:', transcription);
+ })
+ .catch(error => {
     console.error('Error:', error.message);
-}
+ });
